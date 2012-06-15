@@ -4,4 +4,8 @@ class ExploreController < ApplicationController
   
   def index
   end
+
+  def query
+    render :text => "OKAY"
+  end
 end

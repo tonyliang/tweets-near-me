@@ -1,7 +1,9 @@
 <% content_for :javascript_includes do %>
   <%= javascript_include_tag "main.js" %>
+  <%= stylesheet_link_tag "main.css" %>
 <% end %>
-<h1>Explore#main</h1>
-<p>Find me in app/views/explore/main.html.erb</p>
-<h2>Hello</h2>
-<div id="div1">Hello</div>
+
+<center>
+<h1>Tweets Near Me</h1>
+Lng:<input type="text" id="txtGeoLng" class="txtGeo"/>&nbsp;Lat:<input type="text" id="txtGeoLat" class="txtGeo"/>&nbsp;&nbsp;<button id="btnQuery">Search</button>
+<div id="divResult">Result</div>

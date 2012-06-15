@@ -1,0 +1,11 @@
+txtGeo{
+ size: 100px;
+ font-size:14;
+ font-family:arial;
+}
+
+#divResult{
+  font-size:14px;
+  font-family:arial;
+  color:#0000ff;
+}

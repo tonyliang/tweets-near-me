@@ -3,6 +3,7 @@ Banjo::Application.routes.draw do
   controller :explore do 
      get 'main' => :main
      get 'index' => :index
+     get 'query' => :query
   end
 
   # The priority is based upon order of creation:

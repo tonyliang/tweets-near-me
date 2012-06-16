@@ -59,4 +59,23 @@ development:
     # Ensure all times are UTC in the app side. (default: false)
     # use_utc: false
 production :
-   uri: <%= ENV['MONGOHQ_URL'] %>
+  sessions:
+    # Defines the default session. (required)
+    default:
+      # Defines the name of the default database that Mongoid can connect to.
+      # (required).
+      database: banjo_production
+      # Provides the hosts the default session can connect to. Must be an array
+      # of host:port pairs. (required)
+      hosts:
+        - <%= ENV['MONGOHQ_URL'] %>:27017
+      options:
+        # Change whether the session persists in safe mode by default.
+        # (default: false)
+        # safe: false
+
+        # Change the default consistency model to :eventual or :strong.
+        # :eventual will send reads to secondaries, :strong sends everything
+        # to master. (default: :eventual)
+        consistency: :strong
+

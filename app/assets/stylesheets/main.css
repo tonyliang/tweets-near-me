@@ -25,4 +25,14 @@ txtGeo{
  height:50px;
 }
 
+.text{
+ color:gray;
+ font-size:12px;
+ font-weight:bold;
+}
+.name{
+ color:green;
+ font-size:14px;
+}
+
 

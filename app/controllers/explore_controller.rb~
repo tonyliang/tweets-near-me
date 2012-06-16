@@ -8,9 +8,7 @@ class ExploreController < ApplicationController
   def index
   end
 
-  #------------------------------------------------
-  # Using lightweight asynchronous database access.
-  #------------------------------------------------
+
   def fetch(params)
 
       f = Fiber.current
@@ -41,39 +39,57 @@ class ExploreController < ApplicationController
              #continue Fiber
              f.resume(result)
        end
-       
-       #-----------------------------------------------------
-       # EventMachine assigns job and callback, then return
-       # back to caller, so that CPU can work on other request.
-       #-----------------------------------------------------
+
        EventMachine.defer(access_db, callback)
        puts 'return back to main Fiber first'
        return Fiber.yield
    end
 
-  #-----------------------------------
-  # Handle query for near by Tweets
-  #-----------------------------------
-   def query
+def query
 
-      EventMachine.run do
+  EventMachine.run do
 
-           Fiber.new{
-                 result = fetch(params)        
-                 if result
-                     render :json => result
-                 end
-           }.resume
-      end
-   end
+       Fiber.new{
 
-  
-  #-----------------------------------------------------
-  # Find Tweets from MongoDB w.r.t GeoCoordinates as geo
-  # distance as n, and maximum number of tweets as m.
-  #-----------------------------------------------------
-  def tweets_within_n(geo,n,m)    
+              result = fetch(params)        
+              if result
+                  render :json => result
+              end
+      }.resume
 
+ end
+
+end
+  def aquery
+    
+    #EventMachine.run do
+       #Fiber.new{
+         puts '============' 
+         raw_geo = params[:geo]
+         dist = 500
+         max_tweets = 10
+         geo = raw_geo.gsub(/\s+/,'').split(',')
+         geo[0] = geo[0].to_f
+         geo[1] = geo[1].to_f
+         
+         tweets_result_hash = tweets_within_n(geo,dist,max_tweets)
+         puts 'still go'
+        # if tweets_result_hash
+            puts 'abcd'
+            #EventMachine::stop_event_loop
+            render :json => tweets_result_hash
+         #end   
+       #}.resume
+       
+    #end
+
+  end
+
+  def tweets_within_n(geo,n,m)
+     #f = Fiber.current
+     puts '-----------'
+     puts geo.inspect
+     puts '-----------'
      tweets = Tweet.within_circle(location:[geo,n])
      result = {'result'=>[]}
      if tweets.count > 0
@@ -81,7 +97,6 @@ class ExploreController < ApplicationController
            if i+1 > tweets.count
                break
            end
-           #create json object for each tweet
            tweets_hash = {}
            tweets_hash['id'] = tweets[i]['_id']
            tweets_hash['name'] = tweets[i]['name']
@@ -91,8 +106,8 @@ class ExploreController < ApplicationController
            result['result'] << tweets_hash
         end
      end
-
+     puts 'here'
+     #return Fiber.yield result
      return result
   end
-
 end

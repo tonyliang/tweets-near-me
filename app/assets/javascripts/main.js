@@ -37,7 +37,7 @@ $(function(){
                   position: new google.maps.LatLng(tweets[i]['location'][0],tweets[i]['location'][1]),map: map,icon: img});
                  */
                  markers[tweets[i]['id']]=marker;
-                 infoContent[tweets[i]['id']]='name:'+tweets[i]['name']+'<br>text:'+tweets[i]['text'];
+                 infoContent[tweets[i]['id']]='<span class="name">'+tweets[i]['name']+'</span><br><span class="text">'+tweets[i]['text']+'</span>';
                  var tid = tweets[i]['id'];
                  google.maps.event.addListener(marker,'click',(function(marker,tid) {
                  return function() {

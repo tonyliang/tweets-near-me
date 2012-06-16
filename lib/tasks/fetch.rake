@@ -1,6 +1,7 @@
 require 'tweetstream'
 
 task :fetch_tweet => :environment do
+  
   TweetStream.configure do |config|
     config.consumer_key       = 'nHFgd2cXxbilz0HSI4rRA'
     config.consumer_secret    = 'Rp9xET7rHBDsr5lkXeyCPSNcgZKzTd32oZjA4U6lw'
@@ -15,7 +16,7 @@ task :fetch_tweet => :environment do
     if status.user.geo_enabled
        if status.geo
           tweet = {}
-          tweet['coord'] = status.geo.coordinates
+          tweet['location'] = status.geo.coordinates
           tweet['name'] = status.user.name
           tweet['text'] = status.text
           tweet['pic'] = status.user.profile_image_url
@@ -23,5 +24,8 @@ task :fetch_tweet => :environment do
           t = Tweet.create!(tweet)
        end
     end
-  end   
+  end
+  
 end
+
+

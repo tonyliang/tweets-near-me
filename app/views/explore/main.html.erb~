@@ -5,9 +5,9 @@
  <script type="text/javascript"
       src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAoQtCCn8ny-m41vdgFezK2HiqknAbCZns&sensor=false">
     </script>
- <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/richmarker/src/richmarker-compiled.js"></script>
+
 <center>
 <h1>Tweets Near Me</h1>
-Lat:<input type="text" id="txtGeoLat" class="txtGeo"/>&nbsp;Lng:<input type="text" id="txtGeoLng" class="txtGeo"/>&nbsp;&nbsp;<button id="btnQuery">Search</button>
+Lat:<input type="text" id="txtGeoLng" class="txtGeo"/>&nbsp;Lng:<input type="text" id="txtGeoLat" class="txtGeo"/>&nbsp;&nbsp;<button id="btnQuery">Search</button>
 <div id="divResult">Result</div>
 <div id = "map_canvas" style="width: 500px;height: 500px"></div>

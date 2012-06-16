@@ -30,7 +30,7 @@ $(function(){
           			draggable: false,
                                 anchor: RichMarkerPosition.TOP,
           			content: '<div class="mymarker"><img class="img" src="' + tweets[i]['pic'] +
-            			'"/></div>'
+            			'"/></div><br><br>'
           		});
                  /*
                  var marker = new google.maps.Marker({

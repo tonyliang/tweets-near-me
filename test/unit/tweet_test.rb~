@@ -43,7 +43,7 @@ class TweetTest < ActiveSupport::TestCase
      tweet.pic = 'http://me.com/me.jpg'
      tweet.location = [33,44]
      assert tweet.save
-
-  end 
 =end
+  end 
+
 end

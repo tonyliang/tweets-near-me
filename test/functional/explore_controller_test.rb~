@@ -17,7 +17,7 @@ class ExploreControllerTest < ActionController::TestCase
     
   end  
 
-  test "should get json object from query" do
+  test "Get Json From Query" do
 
      get :query,{:geo => '19.365460180789984, -99.2624348401883'}
      json = {'result'=>[{'name' => 'Tony'}]}

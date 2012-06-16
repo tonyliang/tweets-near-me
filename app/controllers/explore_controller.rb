@@ -6,7 +6,10 @@ class ExploreController < ApplicationController
   end
   
   def index
+    render :json => {:name => 'Tony'}
   end
+
+  
 
   #------------------------------------------------
   # Using lightweight asynchronous database access.
@@ -23,7 +26,7 @@ class ExploreController < ApplicationController
          puts 'run blocking i/o' 
          raw_geo = params[:geo]
          dist = 50
-         max_tweets = 10
+         max_tweets = 50
          geo = raw_geo.gsub(/\s+/,'').split(',')
          geo[0] = geo[0].to_f
          geo[1] = geo[1].to_f
@@ -76,6 +79,9 @@ class ExploreController < ApplicationController
 
      tweets = Tweet.within_circle(location:[geo,n])
      result = {'result'=>[]}
+     #if tweets.class != Array
+     #   return result
+     #end
      if tweets.count > 0
         (0..m-1).each do |i|
            if i+1 > tweets.count
@@ -83,11 +89,13 @@ class ExploreController < ApplicationController
            end
            #create json object for each tweet
            tweets_hash = {}
+
            tweets_hash['id'] = tweets[i]['_id']
            tweets_hash['name'] = tweets[i]['name']
            tweets_hash['pic'] = tweets[i]['pic']
            tweets_hash['location'] = tweets[i]['location']
            tweets_hash['text'] = tweets[i]['text']
+
            result['result'] << tweets_hash
         end
      end

@@ -1,6 +1,6 @@
 class Tweet
   include Mongoid::Document
-  validates :name, :location, :pic, :text, presence: true
+  #validates :name, :location, :pic, :text, presence: true
   field :location, type: Array
   field :pic, type: String
   field :name, type: String

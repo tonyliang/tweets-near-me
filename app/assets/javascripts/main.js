@@ -64,7 +64,7 @@ query_tweets();
 var map;
  function initialize() {
         var myOptions = {
-          center: new google.maps.LatLng(37.01564082069659,-119.6218032836914),
+          center: new google.maps.LatLng(33.972652508736545, -118.25439167022705),
           zoom: 8,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };

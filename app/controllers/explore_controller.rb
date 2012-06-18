@@ -25,7 +25,7 @@ class ExploreController < ApplicationController
 
          puts 'run blocking i/o' 
          raw_geo = params[:geo]
-         dist = 10
+         dist = 5
          max_tweets = 50
          geo = raw_geo.gsub(/\s+/,'').split(',')
          geo[0] = geo[0].to_f

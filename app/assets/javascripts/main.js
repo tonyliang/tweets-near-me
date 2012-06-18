@@ -53,6 +53,7 @@ $(function(){
                  })(marker, tid));
              }
              
+             $("#divResult").hide();
         },'json');
     }    
  });
@@ -93,7 +94,6 @@ function clean_up_map(){
     }
     for(var key in infoContent)
          delete infoContent[key];
-    
-    $("#divResult").html('Result');
+    $("#divResult").show();
 }
 

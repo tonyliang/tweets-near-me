@@ -57,14 +57,14 @@ $(function(){
     }    
  });
 initialize();
-
+query_tweets();
 });
 
 
 var map;
  function initialize() {
         var myOptions = {
-          center: new google.maps.LatLng(37.48, -122.33),
+          center: new google.maps.LatLng(37.01564082069659,-119.6218032836914),
           zoom: 8,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };

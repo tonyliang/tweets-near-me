@@ -1,3 +1,8 @@
+/*****************************
+  Author: Tony Liang
+  Date: 06/17/2012
+*****************************/
+
 var markers = {};
 var infoContent = {};
 var infoWindow;
